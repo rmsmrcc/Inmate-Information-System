@@ -10,18 +10,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model Admin {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  email     String    @unique
-  password  String?
-  createdAt DateTime  @default(now())
-  userlevel String?   
-  shift     Int
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  email_admin    String    @unique
+  password_admin   String?
+  createdAt         DateTime  @default(now())
+  shift      Int
 }
 model Visitor {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  email     String    @unique
-  password  String?
-  createdAt DateTime  @default(now())
-  userlevel String?   
-  shift     Int
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  email_visitor    String    @unique
+  password_visitor  String?
+  createdAt         DateTime  @default(now())
+  shift    Int
 }
