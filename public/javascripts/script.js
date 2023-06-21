@@ -151,3 +151,15 @@ loginButton.addEventListener(
     );
   });
 });
+
+function handleImageUpload(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+        var imagePreview = document.getElementById('image-preview');
+        imagePreview.src = e.target.result;
+    }
+    
+    reader.readAsDataURL(file);
+}

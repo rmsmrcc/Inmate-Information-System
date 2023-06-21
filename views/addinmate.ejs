@@ -8,7 +8,7 @@
     <title>Inmate Information System</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="stylesheets/styleindex.css" rel="stylesheet" />
-    <link href="stylesheets/chatgpt.css" rel="stylesheet" />
+
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -66,69 +66,85 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h3 class="mt-4">Add Inmate</h3>
+                    <h3 class="mt-2">Add Inmate</h3>
                 </div>
-                <div class="container">
+                <div class="container container-sm mb-3">
                     <div class="card ">
                         <div class="card-body">
-                            <form action="addinmate" method="post">
-                                <h4>Inamte Details</h4>
+                            <form action="/addinmate" method="post">
+                                <h4 class="text-center">Inmate Details</h4>
+                                <hr class="line">
                                 <div class="row">
-                                    <div class="col-md-3 mb-1">
+                                    <!-- <label class="form-label" for="cellBlock">Inmate Photo</label>
+                                    <div class="col-md-2 mb-2 "
+                                        style="display: flex; justify-content: center; align-items: center;">
+                                        <img id="image-preview"
+                                            src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                                            alt="Preview" onclick="document.getElementById('image-upload').click();"
+                                            width="100" height="100" />
+                                    </div> -->
+
+                                    <div class="col-md-2 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="inmateNo">Inmate No.</label>
                                             <input type="text" id="inmateNo" name="inmateNo"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required    />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 mb-1">
-                                        <div class="form-outline">
-                                            <label class="form-label" for="cellBlock">choose file</label>
-                                            <input type="file" id="cellBlock" name="cellBlock"
-                                                class="form-control form-control-md" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-1">
+
+                                    <div class="col-md-2 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="cellBlock">Cellblock No.</label>
                                             <input type="text" id="cellBlock" name="cellBlock"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                 </div>
 
+                                <!-- <div class="row">
+                                    <div class="col-md-2 mb-1">
+                                        <div class="form-outline-sm">
+                                            <input type="file" id="image-upload" class="form-control form-control-sm"
+                                                onchange="handleImageUpload(event)" accept="image/*" />
+                                        </div>
+                                    </div>
+                                </div> -->
 
                                 <div class="row">
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="lastName">Last Name</label>
-                                            <input type="text" id="lastName" name="lastName"
-                                                class="form-control form-control-md" required />
+                                            <input type="text" id="lastname" name="lastname"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="firstName">First Name</label>
-                                            <input type="text" id="firstName" name="firstName"
-                                                class="form-control form-control-md" required />
+                                            <input type="text" id="firstname" name="firstname"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="midName">Middle Name</label>
-                                            <input type="text" id="midname" name="midName"
-                                                class="form-control form-control-md" required />
+                                            <input type="text" id="middlename" name="middlename"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-1">
-                                        <div class="form-outline">
+                                        <div class="form-group">
                                             <label class="form-label" for="suffix">Suffix</label>
-                                            <input type="text" id="suffix" name="suffix"
-                                                class="form-control form-control-md" />
+                                            <select class="form-select form-select-sm" id="suffix" name="suffix" required>
+                                                <option selected disabled value=""></option>
+                                                <option value="N/A">N/A</option>
+                                                <option value="Jr">Jr.</option>
+                                                <option value="Sr">Sr</option>
+                                                <option value="II">II</option>
+                                                <option value="III">III</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +154,7 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="perAdd">Permanent Address</label>
                                             <input type="text" id="perAdd" name="perAdd"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                 </div>
@@ -193,10 +209,10 @@
                                 </div> -->
 
                                 <div class="row">
-                                    <div class="col-md-3 mb-1">
+                                    <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="lastName">Gender</label>
-                                            <select class="form-select" id="gender" name="gender" required>
+                                            <select class="form-select form-select-sm" id="gender" name="gender" required>
                                                 <option selected disabled value=""></option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
@@ -204,19 +220,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3 mb-1">
+                                    <div class="col-md-3 mb-3">
                                         <div class="form-outline">
                                             <label class="form-label" for="bday">Birthday</label>
                                             <input type="date" id="bday" name="bday"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3 mb-1">
+                                    <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="civilstatus">Civil Status</label>
-                                            <select class="form-select" id="civilstatus" name="civilstatus"
-                                                required>
+                                            <select class="form-select form-select-sm" id="civilstatus" name="civilstatus" required>
                                                 <option selected disabled value=""> </option>
                                                 <option value="single">Single</option>
                                                 <option value="married">Married</option>
@@ -227,10 +242,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3 mb-1">
+                                    <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="eyeColor">Eye Color</label>
-                                            <select class="form-select" id="eyeColor" name="eyeColor" required>
+                                            <select class="form-select form-select-sm" id="eyeColor" name="eyeColor" required>
                                                 <option selected disabled value=""></option>
                                                 <option value="black">Black</option>
                                                 <option value="brown">Brown</option>
@@ -241,13 +256,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h4>Case Details</h4>
+                                <hr class="line">
+                                <h4 class="text-center">Case Details</h4>
+                                <hr class="line">
                                 <div class="row">
                                     <div class="col-md-6 mb-2 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="crimeCom">Crime Commited</label>
                                             <input type="text" id="crimeCom" name="crimeCom"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
@@ -255,57 +272,65 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="sentence">Sentence</label>
                                             <input type="text" id="sentence" name="sentence"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-1">
+                                    <div class="col-md-6 mb-3">
                                         <div class="form-outline">
                                             <label class="form-label" for="dateStart">Date Serve Started</label>
                                             <input type="date" id="dateStart" name="dateStart"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-1">
+                                    <div class="col-md-6 mb-2">
                                         <div class="form-outline">
                                             <label class="form-label" for="dateEnd">Date Serve Ends</label>
                                             <input type="date" id="dateEnd" name="dateEnd"
-                                                class="form-control form-control-md" required />
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                 </div>
-                                <h4>Emergency Details</h4>
+                                <hr class="line">
+                                <h4 class="text-center">Emergency Details</h4>
+                                <hr class="line">
                                 <div class="row">
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
-                                            <label class="form-label" for="lastName">Last Name</label>
-                                            <input type="text" id="lastName" name="lastName"
-                                                class="form-control form-control-md" required />
+                                            <label class="form-label" for="elastname">Last Name</label>
+                                            <input type="text" id="elastname" name="elastname"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
-                                            <label class="form-label" for="firstName">First Name</label>
-                                            <input type="text" id="firstName" name="firstName"
-                                                class="form-control form-control-md" required />
+                                            <label class="form-label" for="efirstname">First Name</label>
+                                            <input type="text" id="efirstname" name="efirstname"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
-                                            <label class="form-label" for="midName">Middle Name</label>
-                                            <input type="text" id="midname" name="midName"
-                                                class="form-control form-control-md" required />
+                                            <label class="form-label" for="emiddleName">Middle Name</label>
+                                            <input type="text" id="emiddleName" name="emiddleName"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-1">
-                                        <div class="form-outline">
-                                            <label class="form-label" for="suffix">Suffix</label>
-                                            <input type="text" id="suffix" name="suffix"
-                                                class="form-control form-control-md" />
+                                        <div class="form-group">
+                                            <label class="form-label" for="esuffix">Suffix</label>
+                                            <select class="form-select form-select-sm" id="esuffix" name="esuffix" required>
+                                                <option selected disabled value=""></option>
+                                                <option value="N/A">N/A</option>
+                                                <option value="Jr">Jr.</option>
+                                                <option value="Sr">Sr</option>
+                                                <option value="II">II</option>
+                                                <option value="III">III</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -313,9 +338,9 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-1">
                                         <div class="form-outline">
-                                            <label class="form-label" for="perAdd">Permanent Address</label>
-                                            <input type="text" id="perAdd" name="perAdd"
-                                                class="form-control form-control-md" required />
+                                            <label class="form-label" for="eperAdd">Permanent Address</label>
+                                            <input type="text" id="eperAdd" name="eperAdd"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                 </div>
@@ -323,7 +348,7 @@
                                     <div class="col-md-6 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="relationship">Relationship</label>
-                                            <select class="form-select" id="relationship" name="relationship" required>
+                                            <select class="form-select form-select-sm" id="relationship" name="relationship" required>
                                                 <option selected disabled value=""></option>
                                                 <option value="f">Father</option>
                                                 <option value="m">Mother</option>
@@ -341,14 +366,16 @@
                                     </div>
                                     <div class="col-md-6 mb-1">
                                         <div class="form-outline">
-                                            <label class="form-label" for="perAdd">Contact</label>
-                                            <input type="text" id="perAdd" name="perAdd"
-                                                class="form-control form-control-md" required />
+                                            <label class="form-label" for="contact">Contact</label>
+                                            <input type="text" id="contact" name="contact"
+                                                class="form-control form-control-sm" required />
                                         </div>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <div class="d-grid gap-2 col-3 mx-auto">
+                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                  </div>
                             </form>
                         </div>
                     </div>
