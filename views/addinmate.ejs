@@ -8,6 +8,7 @@
     <title>Inmate Information System</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="stylesheets/styleindex.css" rel="stylesheet" />
+    <link href="stylesheets/chatgpt.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -67,21 +68,29 @@
                 <div class="container-fluid px-4">
                     <h3 class="mt-4">Add Inmate</h3>
                 </div>
-                <div class="container mt-4 mb-4">
-                    <div class="card">
+                <div class="container">
+                    <div class="card ">
                         <div class="card-body">
                             <form action="addinmate" method="post">
                                 <h4>Inamte Details</h4>
                                 <div class="row">
-                                    <div class="col-md-2 mb-1">
+                                    <div class="col-md-3 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="inmateNo">Inmate No.</label>
                                             <input type="text" id="inmateNo" name="inmateNo"
                                                 class="form-control form-control-md" required />
                                         </div>
                                     </div>
-
-                                    <div class="col-md-2 mb-1">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 mb-1">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="cellBlock">choose file</label>
+                                            <input type="file" id="cellBlock" name="cellBlock"
+                                                class="form-control form-control-md" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="cellBlock">Cellblock No.</label>
                                             <input type="text" id="cellBlock" name="cellBlock"
@@ -89,6 +98,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <div class="row">
                                     <div class="col-md-3 mb-1">
@@ -186,7 +196,7 @@
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="lastName">Gender</label>
-                                            <select class="select form-control" id="gender" name="gender" required>
+                                            <select class="form-select" id="gender" name="gender" required>
                                                 <option selected disabled value=""></option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
@@ -205,7 +215,7 @@
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="civilstatus">Civil Status</label>
-                                            <select class="select form-control" id="civilstatus" name="civilstatus"
+                                            <select class="form-select" id="civilstatus" name="civilstatus"
                                                 required>
                                                 <option selected disabled value=""> </option>
                                                 <option value="single">Single</option>
@@ -220,7 +230,7 @@
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="eyeColor">Eye Color</label>
-                                            <select class="select form-control" id="eyeColor" name="eyeColor" required>
+                                            <select class="form-select" id="eyeColor" name="eyeColor" required>
                                                 <option selected disabled value=""></option>
                                                 <option value="black">Black</option>
                                                 <option value="brown">Brown</option>
@@ -308,11 +318,13 @@
                                                 class="form-control form-control-md" required />
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6 mb-1">
                                         <div class="form-group">
-                                            <label class="form-label" for="eyeColor">Eye Color</label>
-                                            <select class="form-select" id="eyeColor" name="eyeColor" required>
-                                                <option selected disabled value="">Relationship</option>
+                                            <label class="form-label" for="relationship">Relationship</label>
+                                            <select class="form-select" id="relationship" name="relationship" required>
+                                                <option selected disabled value=""></option>
                                                 <option value="f">Father</option>
                                                 <option value="m">Mother</option>
                                                 <option value="s">Son</option>
