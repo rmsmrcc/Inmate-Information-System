@@ -5,16 +5,18 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>I.I.S || Add Inmate</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="stylesheets/styleindex.css" rel="stylesheet" />
 
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <title>I.I.S || View Inmate</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/styleindex.css">
+
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        
+
         <a class="navbar-brand ps-3 " href="/index">Inmate Information System</a>
 
         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -54,9 +56,9 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="addinmate">Add Inmate</a>
-                                <a class="nav-link" href="visitreg">Visitor</a>
-                                <a class="nav-link" href="adminreg">Admin</a>
+                                <a class="nav-link" href="/addinmate">Add Inmate</a>
+                                <a class="nav-link" href="/visitreg">Visitor</a>
+                                <a class="nav-link" href="/adminreg">Admin</a>
                             </nav>
                         </div>
                     </div>
@@ -66,12 +68,12 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h3 class="mt-2">Add Inmate</h3>
+                    <h3 class="mt-2">View Inmate</h3>
                 </div>
                 <div class="container container-sm mb-3">
-                    <div class="card ">
+                    <div class="card">
                         <div class="card-body">
-                            <form action="/addinmate" method="post">
+                            <form class="form">
                                 <h4 class="text-center">Inmate Details</h4>
                                 <hr class="line">
                                 <div class="row">
@@ -80,7 +82,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="inmateNo">Inmate No.</label>
                                             <input type="text" id="inmateNo" name="inmateNo"
-                                                class="form-control form-control-sm" required    />
+                                                class="form-control form-control-sm" value="<%= inmate.inmateNo%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -88,26 +91,19 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="cellBlock">Cellblock No.</label>
                                             <input type="text" id="cellBlock" name="cellBlock"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.cellBlock%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- <div class="row">
-                                    <div class="col-md-2 mb-1">
-                                        <div class="form-outline-sm">
-                                            <input type="file" id="image-upload" class="form-control form-control-sm"
-                                                onchange="handleImageUpload(event)" accept="image/*" />
-                                        </div>
-                                    </div>
-                                </div> -->
 
                                 <div class="row">
                                     <div class="col-md-3 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="lastName">Last Name</label>
                                             <input type="text" id="lastname" name="lastname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.lastname%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -115,7 +111,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="firstName">First Name</label>
                                             <input type="text" id="firstname" name="firstname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.firstname%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -123,20 +120,16 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="midName">Middle Name</label>
                                             <input type="text" id="middlename" name="middlename"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.middlename%>"
+                                                disabled />
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="suffix">Suffix</label>
-                                            <select class="form-select form-select-sm" id="suffix" name="suffix" required>
-                                                <option selected disabled value=""></option>
-                                                <option value="N/A">N/A</option>
-                                                <option value="Jr">Jr.</option>
-                                                <option value="Sr">Sr</option>
-                                                <option value="II">II</option>
-                                                <option value="III">III</option>
-                                            </select>
+                                            <input type="text" id="suffix" name="suffix"
+                                                class="form-control form-control-sm" value="<%= inmate.suffix%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +139,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="perAdd">Permanent Address</label>
                                             <input type="text" id="perAdd" name="perAdd"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.perAdd%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -154,12 +148,10 @@
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
-                                            <label class="form-label" for="lastName">Gender</label>
-                                            <select class="form-select form-select-sm" id="gender" name="gender" required>
-                                                <option selected disabled value=""></option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
+                                            <label class="form-label" for="gender">Gender</label>
+                                            <input type="text" id="gender" name="gender"
+                                                class="form-control form-control-sm" value="<%= inmate.gender%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -167,35 +159,26 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="bday">Birthday</label>
                                             <input type="date" id="bday" name="bday"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.bday%>"
+                                                disabled />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="civilstatus">Civil Status</label>
-                                            <select class="form-select form-select-sm" id="civilstatus" name="civilstatus" required>
-                                                <option selected disabled value=""> </option>
-                                                <option value="single">Single</option>
-                                                <option value="married">Married</option>
-                                                <option value="divorce">Divorce</option>
-                                                <option value="widowed">Widowed</option>
-                                                <option value="seperated">Seperated</option>
-                                            </select>
+                                            <input type="text" id="civilstatus" name="civilstatus"
+                                                class="form-control form-control-sm" value="<%= inmate.civilstatus%>"
+                                                disabled />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="eyeColor">Eye Color</label>
-                                            <select class="form-select form-select-sm" id="eyeColor" name="eyeColor" required>
-                                                <option selected disabled value=""></option>
-                                                <option value="black">Black</option>
-                                                <option value="brown">Brown</option>
-                                                <option value="green">Green</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="yellow">Yellow</option>
-                                            </select>
+                                            <input type="text" id="eyeColor" name="eyeColor"
+                                                class="form-control form-control-sm" value="<%= inmate.eyeColor%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +190,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="crimeCom">Crime Commited</label>
                                             <input type="text" id="crimeCom" name="crimeCom"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.crimeCom%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -215,7 +199,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="sentence">Sentence</label>
                                             <input type="text" id="sentence" name="sentence"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.sentence%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -224,7 +209,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="dateStart">Date Serve Started</label>
                                             <input type="date" id="dateStart" name="dateStart"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.dateStart%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -232,7 +218,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="dateEnd">Date Serve Ends</label>
                                             <input type="date" id="dateEnd" name="dateEnd"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.dateEnd%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +231,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="elastname">Last Name</label>
                                             <input type="text" id="elastname" name="elastname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.elastname%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -252,7 +240,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="efirstname">First Name</label>
                                             <input type="text" id="efirstname" name="efirstname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.efirstname%>"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -260,20 +249,16 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="emiddlename">Middle Name</label>
                                             <input type="text" id="emiddlename" name="emiddlename"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.emiddlename%>"
+                                                disabled />
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="esuffix">Suffix</label>
-                                            <select class="form-select form-select-sm" id="esuffix" name="esuffix" required>
-                                                <option selected disabled value=""></option>
-                                                <option value="N/A">N/A</option>
-                                                <option value="Jr">Jr.</option>
-                                                <option value="Sr">Sr</option>
-                                                <option value="II">II</option>
-                                                <option value="III">III</option>
-                                            </select>
+                                            <input type="text" id="esuffix" name="esuffix"
+                                                class="form-control form-control-sm" value="<%= inmate.esuffix%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -283,7 +268,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="eperAdd">Permanent Address</label>
                                             <input type="text" id="eperAdd" name="eperAdd"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.eperAdd%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
@@ -291,34 +277,24 @@
                                     <div class="col-md-6 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="relationship">Relationship</label>
-                                            <select class="form-select form-select-sm" id="relationship" name="relationship" required>
-                                                <option selected disabled value=""></option>
-                                                <option value="Father">Father</option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Son">Son</option>
-                                                <option value="Daugther">Daugther</option>
-                                                <option value="GrandMother">GrandMother</option>
-                                                <option value="GrandFather">GrandFather</option>
-                                                <option value="GrandrSon">GrandrSon</option>
-                                                <option value="GrandDaugther">GrandDaugther</option>
-                                                <option value="Auntie">Auntie</option>
-                                                <option value="Uncle">Uncle</option>
-                                                <option value="Cousin">Cousin</option>
-                                            </select>
+                                            <input type="text" id="relationship" name="relationship"
+                                                class="form-control form-control-sm" value="<%= inmate.relationship%>"
+                                                disabled />
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-1">
                                         <div class="form-outline">
                                             <label class="form-label" for="contact">Contact</label>
                                             <input type="text" id="contact" name="contact"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.contact%>"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="d-grid gap-2 col-3 mx-auto">
-                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                                  </div>
+                                    <a type="button" class="btn btn-primary mt-3" href="/index">Go Back</a>
+                                </div>
                             </form>
                         </div>
                     </div>

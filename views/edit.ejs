@@ -1,3 +1,5 @@
+edit.ejs
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,19 +7,21 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>I.I.S || Add Inmate</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="stylesheets/styleindex.css" rel="stylesheet" />
 
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <title>Inmate Information System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/styleindex.css" rel="stylesheet" />
+
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        
+
         <a class="navbar-brand ps-3 " href="/index">Inmate Information System</a>
 
-        <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
+        <ul class="navbar-nav ms-auto me-0 me-md-4 my-2 my-md-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -27,6 +31,7 @@
             </li>
         </ul>
     </nav>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -66,12 +71,12 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h3 class="mt-2">Add Inmate</h3>
+                    <h3 class="mt-2">Edit Inmate</h3>
                 </div>
                 <div class="container container-sm mb-3">
                     <div class="card ">
                         <div class="card-body">
-                            <form action="/addinmate" method="post">
+                            <form class="form" action="/edit/<%= inmate.id %>" method="post">
                                 <h4 class="text-center">Inmate Details</h4>
                                 <hr class="line">
                                 <div class="row">
@@ -80,7 +85,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="inmateNo">Inmate No.</label>
                                             <input type="text" id="inmateNo" name="inmateNo"
-                                                class="form-control form-control-sm" required    />
+                                                class="form-control form-control-sm" value="<%= inmate.inmateNo%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -88,7 +94,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="cellBlock">Cellblock No.</label>
                                             <input type="text" id="cellBlock" name="cellBlock"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.cellBlock%>"
+                                                required />
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +114,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="lastName">Last Name</label>
                                             <input type="text" id="lastname" name="lastname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.lastname%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -115,7 +123,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="firstName">First Name</label>
                                             <input type="text" id="firstname" name="firstname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.firstname%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -123,14 +132,18 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="midName">Middle Name</label>
                                             <input type="text" id="middlename" name="middlename"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.middlename%>"
+                                                required />
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="suffix">Suffix</label>
-                                            <select class="form-select form-select-sm" id="suffix" name="suffix" required>
-                                                <option selected disabled value=""></option>
+                                            <select class="form-select form-select-sm" id="suffix" name="suffix"
+                                                required>
+                                                <option selected disabled value="<%= inmate.suffix%>">
+                                                    <%= inmate.suffix%>
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="Jr">Jr.</option>
                                                 <option value="Sr">Sr</option>
@@ -146,7 +159,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="perAdd">Permanent Address</label>
                                             <input type="text" id="perAdd" name="perAdd"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.perAdd%>"
+                                                required />
                                         </div>
                                     </div>
                                 </div>
@@ -155,8 +169,11 @@
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="lastName">Gender</label>
-                                            <select class="form-select form-select-sm" id="gender" name="gender" required>
-                                                <option selected disabled value=""></option>
+                                            <select class="form-select form-select-sm" id="gender" name="gender"
+                                                required>
+                                                <option selected disabled value="<%= inmate.gender%>">
+                                                    <%= inmate.gender%>
+                                                </option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
@@ -167,15 +184,19 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="bday">Birthday</label>
                                             <input type="date" id="bday" name="bday"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.bday%>"
+                                                required />
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="civilstatus">Civil Status</label>
-                                            <select class="form-select form-select-sm" id="civilstatus" name="civilstatus" required>
-                                                <option selected disabled value=""> </option>
+                                            <select class="form-select form-select-sm" id="civilstatus"
+                                                name="civilstatus" required>
+                                                <option selected disabled value="<%= inmate.civilstatus%>">
+                                                    <%= inmate.civilstatus%>
+                                                </option>
                                                 <option value="single">Single</option>
                                                 <option value="married">Married</option>
                                                 <option value="divorce">Divorce</option>
@@ -188,8 +209,11 @@
                                     <div class="col-md-3 mb-3">
                                         <div class="form-group">
                                             <label class="form-label" for="eyeColor">Eye Color</label>
-                                            <select class="form-select form-select-sm" id="eyeColor" name="eyeColor" required>
-                                                <option selected disabled value=""></option>
+                                            <select class="form-select form-select-sm" id="eyeColor" name="eyeColor"
+                                                required>
+                                                <option selected disabled value="<%= inmate.eyeColor%>">
+                                                    <%= inmate.eyeColor%>
+                                                </option>
                                                 <option value="black">Black</option>
                                                 <option value="brown">Brown</option>
                                                 <option value="green">Green</option>
@@ -207,7 +231,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="crimeCom">Crime Commited</label>
                                             <input type="text" id="crimeCom" name="crimeCom"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.crimeCom%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -215,7 +240,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="sentence">Sentence</label>
                                             <input type="text" id="sentence" name="sentence"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.sentence%>"
+                                                required />
                                         </div>
                                     </div>
                                 </div>
@@ -224,7 +250,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="dateStart">Date Serve Started</label>
                                             <input type="date" id="dateStart" name="dateStart"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.dateStart%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -232,7 +259,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="dateEnd">Date Serve Ends</label>
                                             <input type="date" id="dateEnd" name="dateEnd"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.dateEnd%>"
+                                                required />
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +272,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="elastname">Last Name</label>
                                             <input type="text" id="elastname" name="elastname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.elastname%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -252,7 +281,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="efirstname">First Name</label>
                                             <input type="text" id="efirstname" name="efirstname"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.efirstname%>"
+                                                required />
                                         </div>
                                     </div>
 
@@ -260,14 +290,18 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="emiddlename">Middle Name</label>
                                             <input type="text" id="emiddlename" name="emiddlename"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.emiddlename%>"
+                                                required />
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="esuffix">Suffix</label>
-                                            <select class="form-select form-select-sm" id="esuffix" name="esuffix" required>
-                                                <option selected disabled value=""></option>
+                                            <select class="form-select form-select-sm" id="esuffix" name="esuffix"
+                                                required>
+                                                <option selected disabled value="<%= inmate.esuffix%>">
+                                                    <%= inmate.esuffix%>
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="Jr">Jr.</option>
                                                 <option value="Sr">Sr</option>
@@ -283,7 +317,8 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="eperAdd">Permanent Address</label>
                                             <input type="text" id="eperAdd" name="eperAdd"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.eperAdd%>"
+                                                required />
                                         </div>
                                     </div>
                                 </div>
@@ -291,8 +326,11 @@
                                     <div class="col-md-6 mb-1">
                                         <div class="form-group">
                                             <label class="form-label" for="relationship">Relationship</label>
-                                            <select class="form-select form-select-sm" id="relationship" name="relationship" required>
-                                                <option selected disabled value=""></option>
+                                            <select class="form-select form-select-sm" id="relationship"
+                                                name="relationship" required>
+                                                <option selected disabled value="<%= inmate.relationship%>">
+                                                    <%= inmate.relationship%>
+                                                </option>
                                                 <option value="Father">Father</option>
                                                 <option value="Mother">Mother</option>
                                                 <option value="Son">Son</option>
@@ -311,14 +349,15 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="contact">Contact</label>
                                             <input type="text" id="contact" name="contact"
-                                                class="form-control form-control-sm" required />
+                                                class="form-control form-control-sm" value="<%= inmate.contact%>"
+                                                required />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="d-grid gap-2 col-3 mx-auto">
                                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                                  </div>
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -10,6 +10,9 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var schedRouter = require('./routes/sched');
 var addinmateRouter = require('./routes/addinmate');
+var deleteRouter = require('./routes/delete');
+var viewRouter = require('./routes/view');
+var editRouter = require('./routes/edit');
 
 var app = express();
 const PORT = process.env.PORT ||5000;
@@ -34,6 +37,9 @@ app.use('/', loginRouter);
 app.use('/', registerRouter);
 app.use('/', schedRouter);
 app.use('/', addinmateRouter);
+app.use('/', deleteRouter);
+app.use('/', viewRouter);
+app.use('/', editRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
