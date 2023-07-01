@@ -55,7 +55,7 @@ exports.postVisitLogin = async (req, res,error) => {
         if (visitor) {
             const decryptedpw = decrypt(visitor.password_visitor, visitor.shift);
             if (decryptedpw === password_visitor) {
-                    res.redirect('/sched');
+                    res.redirect('/visitorindex');
             } else {
                 res.send('Incorrect Email and/or Password');
                 console.log(error);

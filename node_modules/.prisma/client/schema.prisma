@@ -48,5 +48,24 @@ model InmateRecord {
   relationship String?
   contact      String?
 }
-
+model VisitSched {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  inmateNo     String?
+  cellBlock    String?
+  lastname     String?
+  firstname    String?
+  middlename   String?
+  suffix       String?
+  gender       String?
+  bday         String?
+  vlastname     String?
+  vfirstname    String?
+  vmiddlename   String?
+  vsuffix       String?
+  vperAdd       String?
+  timeVisit    String?
+  dateVisit    String?
+  relationship String?
+  contact      String?
+}
 // "mongodb+srv://mmcramos:marcramos15@cluster0.zf5zomy.mongodb.net/InmateInformationSystem"
