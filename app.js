@@ -12,6 +12,7 @@ var visitorindexRouter = require('./routes/visitorindex');
 var visitschedRouter = require('./routes/visitsched');
 var addinmateRouter = require('./routes/addinmate');
 var deleteRouter = require('./routes/delete');
+var visitviewRouter = require('./routes/visitview');
 var viewRouter = require('./routes/view');
 var editRouter = require('./routes/edit');
 
@@ -42,6 +43,7 @@ app.use('/', addinmateRouter);
 app.use('/', deleteRouter);
 app.use('/', viewRouter);
 app.use('/', editRouter);
+app.use('/', visitviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

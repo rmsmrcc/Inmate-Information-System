@@ -16,9 +16,14 @@
 <body class="sb-nav-fixed">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     
-    <a class="navbar-brand ps-3 " href="/index">Inmate Information System</a>
+    <a class="navbar-brand ps-5 " href="/index">Inmate Information System</a>
+   
 
-    <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
+    <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0"> 
+      <% allvisit.forEach((visit) => { %>
+        <a class="nav-link active" aria-current="page" href="/visitview/<%= visit.id %>">View Appointment</a>
+      <% }) %>
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
           aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -43,8 +48,7 @@
                     <th>inmateNo</th>
                     <th>firstname</th>
                     <th>lastname</th>
-                    <th>Set Appointment</th>
-                  </tr>
+                    <th>Set Appointment</th>  
                 </thead>
                 <tfoot>
                   <tr>
@@ -69,6 +73,7 @@
                       <td>
                         <a href="/visitsched/<%= inmate.id %>"><button class="btn btn-basic"><i
                               class="fa-solid fa-book"></i></button></a>
+                              
                       </td>
                     </tr>
                     <% }) %>

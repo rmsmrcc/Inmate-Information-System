@@ -29,6 +29,7 @@ exports.postVisitSched = async (req, res) => {
       dateVisit,
       relationship,
       contact,
+      visitor,
     } = req.body;
 
     const visitsched = await prisma.visitSched.create({
@@ -50,12 +51,18 @@ exports.postVisitSched = async (req, res) => {
         dateVisit,
         relationship,
         contact,
-      }
+        visitor: {  // Provide the necessary information for the visitor object
+          // Fill in the properties based on your requirements
+          // For example:
+          firstname,
+          lastname,
+      },
+    }
     });
 
     console.log('Set Appointment successfully');
   } catch (error) {
     console.error(error);
   }
-  res.redirect('visitindex');
+  res.redirect('visitorindex');
 };
